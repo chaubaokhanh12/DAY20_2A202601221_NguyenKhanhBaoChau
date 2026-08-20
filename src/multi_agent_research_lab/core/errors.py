@@ -1,4 +1,4 @@
-"""Domain-specific errors for the lab skeleton."""
+"""Domain-specific errors for the lab."""
 
 
 class LabError(Exception):
@@ -6,7 +6,10 @@ class LabError(Exception):
 
 
 class StudentTodoError(LabError):
-    """Raised where learners are expected to implement core logic."""
+    """Kept for backwards compatibility with the starter skeleton.
+
+    Nothing in `src/` raises it any more: every TODO of the starter repo is implemented.
+    """
 
 
 class AgentExecutionError(LabError):
@@ -15,3 +18,19 @@ class AgentExecutionError(LabError):
 
 class ValidationError(LabError):
     """Raised when state or output validation fails."""
+
+
+class ProviderError(LabError):
+    """Raised when an external provider (LLM, search) call fails."""
+
+
+class LLMError(ProviderError):
+    """Raised when the LLM provider fails after retries."""
+
+
+class SearchError(ProviderError):
+    """Raised when the search provider fails after retries."""
+
+
+class BudgetExceededError(LabError):
+    """Raised when a run exceeds its iteration / time / cost budget."""

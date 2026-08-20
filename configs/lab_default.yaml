@@ -1,6 +1,7 @@
 lab:
   name: multi-agent-research-lab
-  max_iterations: 6
+  # 8 = researcher, analyst, writer, critic, (writer revision, critic re-review), done + slack
+  max_iterations: 8
   timeout_seconds: 60
 
 agents:
@@ -16,6 +17,9 @@ agents:
   writer:
     model: gpt-4o-mini
     temperature: 0.4
+  critic:
+    model: gpt-4o-mini
+    temperature: 0.0
 
 benchmark:
   queries:

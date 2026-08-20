@@ -1,0 +1,102 @@
+{
+  "run_name": "multi_agent",
+  "started_at": "2026-08-20T05:26:54.223114+00:00",
+  "wall_seconds": 0.0182,
+  "span_count": 10,
+  "spans": [
+    {
+      "name": "workflow",
+      "attributes": {
+        "engine": "langgraph"
+      },
+      "status": "ok",
+      "duration_seconds": 0.0182,
+      "started_at": "2026-08-20T05:26:55.176660+00:00"
+    },
+    {
+      "name": "supervisor",
+      "attributes": {
+        "iteration": 0
+      },
+      "status": "ok",
+      "duration_seconds": 0.0001,
+      "started_at": "2026-08-20T05:26:55.186543+00:00"
+    },
+    {
+      "name": "researcher",
+      "attributes": {
+        "iteration": 1,
+        "attempt": 1
+      },
+      "status": "ok",
+      "duration_seconds": 0.0004,
+      "started_at": "2026-08-20T05:26:55.187391+00:00"
+    },
+    {
+      "name": "supervisor",
+      "attributes": {
+        "iteration": 1
+      },
+      "status": "ok",
+      "duration_seconds": 0.0,
+      "started_at": "2026-08-20T05:26:55.188225+00:00"
+    },
+    {
+      "name": "analyst",
+      "attributes": {
+        "iteration": 2,
+        "attempt": 1
+      },
+      "status": "ok",
+      "duration_seconds": 0.0001,
+      "started_at": "2026-08-20T05:26:55.188874+00:00"
+    },
+    {
+      "name": "supervisor",
+      "attributes": {
+        "iteration": 2
+      },
+      "status": "ok",
+      "duration_seconds": 0.0,
+      "started_at": "2026-08-20T05:26:55.189406+00:00"
+    },
+    {
+      "name": "writer",
+      "attributes": {
+        "iteration": 3,
+        "attempt": 1
+      },
+      "status": "ok",
+      "duration_seconds": 0.0001,
+      "started_at": "2026-08-20T05:26:55.190346+00:00"
+    },
+    {
+      "name": "supervisor",
+      "attributes": {
+        "iteration": 3
+      },
+      "status": "ok",
+      "duration_seconds": 0.0,
+      "started_at": "2026-08-20T05:26:55.190893+00:00"
+    },
+    {
+      "name": "critic",
+      "attributes": {
+        "iteration": 4,
+        "attempt": 1
+      },
+      "status": "ok",
+      "duration_seconds": 0.0003,
+      "started_at": "2026-08-20T05:26:55.191569+00:00"
+    },
+    {
+      "name": "supervisor",
+      "attributes": {
+        "iteration": 4
+      },
+      "status": "ok",
+      "duration_seconds": 0.0001,
+      "started_at": "2026-08-20T05:26:55.192649+00:00"
+    }
+  ]
+}

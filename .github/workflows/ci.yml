@@ -17,7 +17,8 @@ jobs:
           cache: pip
 
       - name: Install dependencies
-        run: pip install -e ".[dev]"
+        # the llm extra brings langgraph, so CI exercises the real graph engine too
+        run: pip install -e ".[dev,llm]"
 
       - name: Lint
         run: ruff check src tests
@@ -25,5 +26,18 @@ jobs:
       - name: Format check
         run: ruff format --check src tests
 
+      - name: Type check
+        run: mypy src tests
+
       - name: Tests
         run: pytest
+
+      - name: No student TODOs left in src
+        run: |
+          if grep -R "TODO(student)" -n src; then
+            echo "::error::src still contains TODO(student) markers"
+            exit 1
+          fi
+
+      - name: Benchmark smoke run (offline mocks)
+        run: python -m multi_agent_research_lab.cli benchmark --output reports/ci_benchmark.md

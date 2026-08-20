@@ -8,6 +8,15 @@ __pycache__/
 dist/
 build/
 *.egg-info/
+#git commit --amend --no-edit
+#git rebase --continue
+#git push origin update --force-with-lease
+# Run artifacts: ignored by default, except the graded deliverables below.
 reports/*.json
 reports/*.md
+reports/answers/
+reports/states/
+reports/traces/*
+!reports/benchmark_report.md
+!reports/traces/sample_multi_agent_trace.json
 !.gitkeep

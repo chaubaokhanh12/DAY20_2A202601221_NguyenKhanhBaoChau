@@ -22,7 +22,9 @@ File gợi ý:
 - `src/multi_agent_research_lab/cli.py`
 - `src/multi_agent_research_lab/services/llm_client.py`
 
-TODO(student): thay baseline placeholder bằng một call LLM thật.
+**Đã làm:** `graph/baseline.py` (`SingleAgentBaseline`) gọi LLM đúng một lần, không
+retrieval — đây là control group. `services/llm_client.py` có `OpenAIClient` (retry,
+timeout, token/cost accounting) và `MockLLMClient` deterministic để chạy offline.
 
 ## Milestone 2: Supervisor
 
@@ -31,7 +33,9 @@ File gợi ý:
 - `src/multi_agent_research_lab/agents/supervisor.py`
 - `src/multi_agent_research_lab/graph/workflow.py`
 
-TODO(student): implement routing policy.
+**Đã làm:** `agents/supervisor.py` — routing rule-based theo field còn thiếu, kèm
+budget iteration/cost, anti-oscillation, và vòng revision sau critic.
+`graph/workflow.py` build LangGraph `StateGraph` (có engine `sequential` dự phòng).
 
 Gợi ý câu hỏi thiết kế:
 
@@ -49,7 +53,9 @@ File gợi ý:
 - `src/multi_agent_research_lab/agents/analyst.py`
 - `src/multi_agent_research_lab/agents/writer.py`
 
-TODO(student): implement từng worker.
+**Đã làm:** Researcher (search + dedupe + gán `[S#]`), Analyst (key claims / tensions /
+evidence gaps / confidence), Writer (answer + citation + revision), Critic (kiểm tra
+citation ảo và coverage).
 
 ## Milestone 4: Trace và benchmark
 
@@ -68,6 +74,19 @@ Benchmark tối thiểu:
 | Quality | rubric 0-10 do peer review |
 | Citation coverage | số claims có source / tổng claims chính |
 | Failure rate | số query fail / tổng query |
+
+
+## Milestone 4 — kết quả đo được
+
+Chạy `python -m multi_agent_research_lab.cli benchmark` sinh `reports/benchmark_report.md`.
+Kết quả với mock provider (3 query, deterministic):
+
+| Run | Latency | Cost | Quality | Citation cov. | LLM calls |
+|---|---:|---:|---:|---:|---:|
+| single_agent | ~0.00s | $0 | 4.2 | 0% | 1 |
+| multi_agent | ~0.5s | $0 | 10.0 | 100% | 4 |
+
+Với provider thật, cột Cost/Latency mới có ý nghĩa tuyệt đối; tỷ lệ ~4x call vẫn giữ.
 
 ## Troubleshooting
 
@@ -115,3 +134,5 @@ Mỗi nhóm trả lời 2 câu:
 
 1. Case nào nên dùng multi-agent? Vì sao?
 2. Case nào không nên dùng multi-agent? Vì sao?
+
+Câu trả lời của bài nộp này: `docs/exit_ticket.md`.
